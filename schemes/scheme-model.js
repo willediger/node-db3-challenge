@@ -14,7 +14,7 @@ module.exports = {
       .join("steps as st", "sch.id", "st.scheme_id")
       .select("st.id", "sch.scheme_name", "st.step_number", "st.instructions")
       .where("sch.id", id)
-      .orderBy("st.id");
+      .orderBy("st.step_number");
   },
   insert: function(scheme) {
     return db("schemes")
