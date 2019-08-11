@@ -31,5 +31,16 @@ module.exports = {
     return db("schemes")
       .where("id", id)
       .del();
+  },
+  addStep: function(step, scheme_id) {
+    const newStep = { ...step, scheme_id };
+    return db("steps")
+      .insert(newStep)
+      .then(([id]) => this.findStepById(id));
+  },
+  findStepById: function(id) {
+    return db("steps")
+      .where("id", id)
+      .first();
   }
 };
